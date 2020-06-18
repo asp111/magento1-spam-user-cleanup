@@ -27,11 +27,6 @@ $customers = Mage::getModel('customer/customer')
     ->addAttributeToSelect('*')
     ->addAttributeToFilter(
         array(
-            array('attribute' => 'confirmation', array('notnull' => true)),
-        )
-    )
-    ->addAttributeToFilter(
-        array(
             array('attribute' => 'email', 'like' => '%.ru'),
             array('attribute' => 'lastname', 'regexp' => '[a-z][A-Z]{2}'),
             array('attribute' => 'lastname', 'regexp' => '[0-9]'),
@@ -40,6 +35,14 @@ $customers = Mage::getModel('customer/customer')
         )
       );
 
+
+/*  Add this filter only if you have set confirmation to yes in magento 1 setings. 
+    ->addAttributeToFilter(
+        array(
+            array('attribute' => 'confirmation', array('notnull' => true)),
+        )
+    )
+*/
 // addAttributeToFilter ist eine OR-Condition!
 
 foreach ($customers as $customer) {
